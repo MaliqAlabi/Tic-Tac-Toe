@@ -34,6 +34,10 @@ function boxClicked(e) {
         if(winningResult() !==false){
             gameStatus.textContent = `${currentPlayer} has won`
             playerMoves = 10
+
+            let winnerColor = winningResult()
+            winnerColor.map(theme => cellEl[theme].style.color = 'green')
+            gameStatus.style.color = 'green'
             return
         }
 
@@ -43,7 +47,8 @@ function boxClicked(e) {
 
     if(playerMoves == 9){
         gameStatus.textContent = `DRAW GAME`
-        cellEl.forEach(box => box.style.color = 'red');
+        cellEl.forEach(box => box.style.color = 'red')
+        gameStatus.style.color = 'red'
     }
 }
 
@@ -64,6 +69,7 @@ restartBtn.addEventListener('click', function () {
     cellEl.forEach(box => box.textContent = '')
     cellEl.forEach(box => box.style.color = '#F2C14E')
     gameStatus.innerHTML = 'Tic Tac Toe'
+    gameStatus.style.color = '#F2C14E'
     playerMoves = 0
 })
 
